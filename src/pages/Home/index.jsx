@@ -1,89 +1,40 @@
-import { useState } from "react";
 import "./style.css";
-import Trash from "../../assets/trash.svg";
+import See from "../../assets/see.svg";
+import { Link } from "react-router-dom";
 
 function Home() {
-   const [users, setUsers] = useState(() => {
-      const usersSalvos = localStorage.getItem("users");
-      return usersSalvos ? JSON.parse(usersSalvos) : [];
-   });
-
-   const [name, setName] = useState("");
-   const [idade, setIdade] = useState("");
-   const [email, setEmail] = useState("");
-
-   function addUser() {
-      const newUser = {
-         id: users.length + 1,
-         name: name,
-         idade: idade,
-         email: email,
-      };
-
-      const atualizaUsers = [...users, newUser];
-      setUsers(atualizaUsers);
-      localStorage.setItem("users", JSON.stringify(atualizaUsers));
-
-      setName("");
-      setIdade("");
-      setEmail("");
-   }
-
-   function deleteUser(id) {
-      const atualizaUsers = users.filter((user) => user.id !== id);
-      setUsers(atualizaUsers);
-      localStorage.setItem("users", JSON.stringify(atualizaUsers));
-   }
-
    return (
       <div className="container">
-         <form>
-            <h1>Cadastro de Usuários</h1>
-            <input
-               placeholder="Nome"
-               name="nome"
-               type="text"
-               value={name}
-               onChange={(e) => setName(e.target.value)}
-            />
+         <div className="list">
+            <h1>Lista de Tutoriais:</h1>
 
-            <input
-               placeholder="Idade"
-               name="idade"
-               type="number"
-               value={idade}
-               onChange={(e) => setIdade(e.target.value)}
-            />
-            <input
-               placeholder="E-mail"
-               name="email"
-               type="email"
-               value={email}
-               onChange={(e) => setEmail(e.target.value)}
-            />
-            <button type="button" onClick={addUser}>
-               Cadastrar
-            </button>
-         </form>
+            <div className="item-list">
+               <div>
+                  <p>Tutorial no site oficial do React</p>
+                  <a href="https://pt-br.react.dev/learn">
+                     https://pt-br.react.dev/learn
+                  </a>
+               </div>
+               <Link to="/cadastro">
+                  <img src={See} alt="" />
+               </Link>
+            </div>
 
-         {users.map((user) => (
-            <div key={user.id} className="card">
+            <div className="item-list">
                <div>
                   <p>
-                     Nome: <span>{user.name}</span>
+                     Tutorial Youtube - Aprendendo React do Zero, Conectando
+                     Back e Front End, e Consumindo API
                   </p>
-                  <p>
-                     Idade: <span>{user.idade}</span>
-                  </p>
-                  <p>
-                     Email: <span>{user.email}</span>
-                  </p>
+                  <a href="https://www.youtube.com/watch?v=_gHr2Pe5LCY&t=0s">
+                     https://www.youtube.com/watch?v=_gHr2Pe5LCY&t=0s
+                  </a>
                </div>
-               <button onClick={() => deleteUser(user.id)}>
-                  <img src={Trash} />
-               </button>
+               <Link to="/cadastro">
+                  <img src={See} alt="" />
+               </Link>
             </div>
-         ))}
+         </div>
       </div>
    );
 }
