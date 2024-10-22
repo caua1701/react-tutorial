@@ -6,7 +6,19 @@
 }
 
 body {
-   min-height: 100vmax;
-   width: 100vw;
+   min-height: 100vh;
+   width: 100%;
    background: linear-gradient(100deg, #363467 0%, rgba(30, 29, 79, 0.8) 100%);
+}
+
+.back {
+   position: absolute;
+   top: 20px;
+   left: 20px;
+   width: 50px;
+}
+
+.back:hover {
+   opacity: 0.4;
+   cursor: pointer;
 }

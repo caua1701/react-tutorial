@@ -21,7 +21,7 @@
    }
 }
 
-.item-list {
+.itemList {
    display: flex;
    background-color: #8b8ae1;
    justify-content: space-between;

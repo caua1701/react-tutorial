@@ -1,26 +1,30 @@
-import "./style.css";
+import style from "./home.module.css"; // Import do CSS Modules
 import See from "../../assets/see.svg";
 import { Link } from "react-router-dom";
 
 function Home() {
    return (
-      <div className="container">
-         <div className="list">
+      <div className={style.container}>
+         {" "}
+         {/* Aplicando a classe com CSS Modules */}
+         <div className={style.list}>
+            {" "}
+            {/* Aplicando outra classe */}
             <h1>Lista de Tutoriais:</h1>
-
-            <div className="item-list">
+            <div className={style.itemList}>
+               {" "}
+               {/* Usando a classe item-list como itemList no CSS Module */}
                <div>
                   <p>Tutorial no site oficial do React</p>
-                  <a href="https://pt-br.react.dev/learn">
-                     https://pt-br.react.dev/learn
+                  <a href="https://pt-br.react.dev/learn/tutorial-tic-tac-toe">
+                     https://pt-br.react.dev/learn/tutorial-tic-tac-toe
                   </a>
                </div>
-               <Link to="/cadastro">
-                  <img src={See} alt="" />
+               <Link to="/jogo-da-velha">
+                  <img src={See} alt="Visualizar Tutorial" />
                </Link>
             </div>
-
-            <div className="item-list">
+            <div className={style.itemList}>
                <div>
                   <p>
                      Tutorial Youtube - Aprendendo React do Zero, Conectando
@@ -31,7 +35,7 @@ function Home() {
                   </a>
                </div>
                <Link to="/cadastro">
-                  <img src={See} alt="" />
+                  <img src={See} alt="Visualizar Tutorial" />
                </Link>
             </div>
          </div>

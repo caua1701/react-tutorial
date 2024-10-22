@@ -1,6 +1,8 @@
 import { useState } from "react";
-import "./style.css";
+import style from "./cadastro.module.css"; // Importa o CSS Module
 import Trash from "../../assets/trash.svg";
+import arrow from "../../assets/arrow.svg";
+import { Link } from "react-router-dom";
 
 function ProjetoCadastro() {
    const [users, setUsers] = useState(() => {
@@ -36,7 +38,10 @@ function ProjetoCadastro() {
    }
 
    return (
-      <div className="container">
+      <div className={style.container}>
+         <Link to="/">
+            <img src={arrow} alt="" className="back" />
+         </Link>{" "}
          <form>
             <h1>Cadastro de Usuários</h1>
             <input
@@ -46,7 +51,6 @@ function ProjetoCadastro() {
                value={name}
                onChange={(e) => setName(e.target.value)}
             />
-
             <input
                placeholder="Idade"
                name="idade"
@@ -65,9 +69,9 @@ function ProjetoCadastro() {
                Cadastrar
             </button>
          </form>
-
          {users.map((user) => (
-            <div key={user.id} className="card">
+            <div key={user.id} className={style.card}>
+               {/* Usando a classe do CSS Module */}
                <div>
                   <p>
                      Nome: <span>{user.name}</span>
@@ -80,7 +84,7 @@ function ProjetoCadastro() {
                   </p>
                </div>
                <button onClick={() => deleteUser(user.id)}>
-                  <img src={Trash} />
+                  <img src={Trash} alt="Delete" />
                </button>
             </div>
          ))}
